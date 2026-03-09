@@ -1,0 +1,29 @@
+# Gegenereerd door dns_checker.py bij eerste opstart
+reports/
+docs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# PyInstaller
+*.spec
+
+# Virtuele omgevingen
+.venv/
+venv/
+env/
+
+# Invoerbestanden met mogelijk gevoelige domeinnamen
+domains.txt
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
