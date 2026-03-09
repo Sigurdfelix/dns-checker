@@ -127,7 +127,9 @@ Uitvoer: `reports/dns_results_20260308_143022.xlsx`
 | `--domain` | Enkel domein controleren | — |
 | `--domains` | Pad naar domains.txt | — |
 | `--workers` | Aantal parallelle threads | 5 |
-| `--timeout` | DNS timeout in seconden | 5 |
+| `--timeout` | DNS timeout in seconden | 3 |
+| `--http-timeout` | HTTP timeout in seconden (security.txt, MTA-STS) | 5 |
+| `--insecure` | TLS-waarschuwingen onderdrukken bij HTTP-checks | uit |
 | `--no-input` | Geen interactieve vragen | uit |
 
 ```bash
@@ -178,7 +180,7 @@ SPF legt vast welke mailservers e-mail mogen versturen namens een domein.
 | `?all` | Neutraal — ontvangende server doet niets | ❌ Slecht |
 
 **DNS lookups:** RFC 7208 staat maximaal 10 toe, geteld recursief door alle includes heen.  
-**Recordlengte:** Een enkel TXT-record mag maximaal 255 bytes zijn (RFC 4408).  
+**Recordlengte:** Gemeten over het samengevoegde record. Bij >255 bytes is consolidatie van includes aan te raden (RFC 7208).  
 **Dubbele records:** RFC 7208 staat per domein maar één SPF-record toe.  
 **Verzenders:** De tool klapt alle `include:`-mechanismen recursief uit en toont welke providers er achter zitten.
 
@@ -272,14 +274,13 @@ dns_checker.py
 
 ## Licentie
 
-**Vrije gebruikslicentie met verplichte naamsvermelding.**
+Dit script is uitgebracht onder de **Apache License 2.0**.
 
-Iedereen mag dit script vrij gebruiken, kopiëren, aanpassen en verspreiden — ook commercieel — onder twee voorwaarden:
+Copyright 2026 Sigurd Felix
 
-1. De vermelding **© Sigurd Felix** blijft aanwezig in alle gegenereerde rapporten.
-2. De auteursinformatie blijft aanwezig in de broncode.
+Je mag het script vrij gebruiken, kopiëren, aanpassen en verspreiden — ook commercieel — mits je de licentietekst en copyright-vermelding meestuurt bij eventuele verspreiding en gewijzigde bestanden als zodanig markeert.
 
-Zie `docs/LICENSE.txt` voor de volledige licentietekst.
+Zie `docs/LICENSE.txt` voor de volledige licentietekst, of raadpleeg [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 ---
 
